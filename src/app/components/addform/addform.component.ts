@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Task } from '../../app.task';
 
 @Component({
     selector: 'addform',
@@ -13,10 +14,7 @@ export class AddFormComponent implements OnInit {
     constructor() { }
 
     addTask() {
-        this.task = {
-            title: this.taskTitle,
-            priority: this.taskPriority
-        }
+        this.task = new Task(this.taskTitle, this.taskPriority);
     }
 
     ngOnInit() {

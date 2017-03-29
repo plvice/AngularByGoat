@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Task } from '../../app.task';
 
 @Component({
     selector: 'todolist',
@@ -9,10 +10,7 @@ export class TodoListComponent implements OnInit {
     taskList: Array<Object>;
 
     constructor() {
-        var initialTask = {
-            title: 'Add new task',
-            priority: 2
-        };
+        let initialTask = new Task('Add new task', 2);
 
         this.taskList = [];
         this.addNewTask(initialTask);
@@ -24,7 +22,7 @@ export class TodoListComponent implements OnInit {
 
     removeTask(index) {
         var taskToRemove = this.taskList[index];
-        
+
         if (taskToRemove) {
             this.taskList.splice(index, 1);
         }
