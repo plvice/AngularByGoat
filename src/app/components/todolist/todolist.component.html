@@ -1,9 +1,15 @@
 <h2>todo list</h2>
 
 <ul>
-    <li>task 1</li>
-    <li>task 2</li>
-    <li>task 3</li>
-    <li>task 4</li>
-    <li>task 5</li>
+    <li *ngFor="let task of taskList; let index = index">
+        <div [ngClass]="{
+                'task': true,
+                'high': task.priority === 2,
+                'medium': task.priority === 1,
+                'low': task.priority === 0
+            }">
+            {{task.title}}
+            <button type="button" (click)="removeTask(index)">X remove</button>
+        </div>
+    </li>
 </ul>

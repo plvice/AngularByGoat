@@ -6,7 +6,31 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class TodoListComponent implements OnInit {
-    constructor() { }
+    taskList: Array<Object>;
 
-    ngOnInit() { }
+    constructor() {
+        var initialTask = {
+            title: 'Add new task',
+            priority: 2
+        };
+
+        this.taskList = [];
+        this.addNewTask(initialTask);
+    }
+
+    addNewTask(task) {
+        this.taskList.unshift(task);
+    }
+
+    removeTask(index) {
+        var taskToRemove = this.taskList[index];
+        
+        if (taskToRemove) {
+            this.taskList.splice(index, 1);
+        }
+    }
+
+    ngOnInit() {
+        
+    }
 }

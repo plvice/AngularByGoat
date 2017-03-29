@@ -1,0 +1,15 @@
+.task {
+    border: 1px solid #bbb;
+}
+
+.low {
+    border-color: green;
+}
+
+.medium {
+    border-color: orange;
+}
+
+.high {
+    border-color: red;
+}
