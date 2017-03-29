@@ -6,7 +6,20 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AddFormComponent implements OnInit {
+    task: Object;
+    taskTitle: String;
+    taskPriority: Number;
+
     constructor() { }
 
-    ngOnInit() { }
+    addTask() {
+        this.task = {
+            title: this.taskTitle,
+            priority: this.taskPriority
+        }
+    }
+
+    ngOnInit() {
+        console.log('add task form initialized');
+    }
 }
