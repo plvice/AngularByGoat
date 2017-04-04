@@ -10,6 +10,10 @@ export class TodoListComponent implements OnInit {
     taskList: Array<Object>;
 
     constructor() {
+        this.initTaskList();
+    }
+
+    initTaskList() {
         let initialTask = new Task('Add new task', 2);
 
         this.taskList = [];
