@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../../app.task';
+import { TaskService } from '../../services/task.service';
 
 @Component({
     selector: 'todolist',
@@ -7,20 +8,23 @@ import { Task } from '../../app.task';
 })
 
 export class TodoListComponent implements OnInit {
-    taskList: Array<Object>;
+    taskList: Array<Task>;
 
-    constructor() {
-        this.initTaskList();
+    constructor(private taskService: TaskService) {
+        let initialData = taskService.getDefaultTaskList();
+        this.initTaskList(initialData);
     }
 
-    initTaskList() {
-        let initialTask = new Task('Add new task', 2);
-
+    initTaskList(tasks: Array<Task>) {
         this.taskList = [];
-        this.addNewTask(initialTask);
+        this.addDefaultTasks(tasks);
     }
 
-    addNewTask(task) {
+    addDefaultTasks(tasks: Array<Task>) {
+        this.taskList = tasks;
+    }
+
+    addNewTask (task: Task) {
         this.taskList.unshift(task);
     }
 

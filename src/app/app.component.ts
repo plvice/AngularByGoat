@@ -1,4 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
+import { Task } from './app.task';
+import { TaskService } from './services/task.service';
 import { TodoListComponent } from './components/todolist/todolist.component';
 
 @Component({
@@ -9,17 +11,19 @@ import { TodoListComponent } from './components/todolist/todolist.component';
 
 export class AppComponent {
     @ViewChild(TodoListComponent) TodoListComponent : TodoListComponent
+    taskList: Array<Task>;
 
-    constructor() {
-      
+    constructor(private taskService: TaskService) {
+      this.taskList = this.taskService.getDefaultTaskList();
     }
 
     reset() {
-      this.TodoListComponent.initTaskList();
+      let data = this.taskService.getDefaultTaskList();
+      this.TodoListComponent.initTaskList(data);
     }
 
     ngAfterViewInit() {
-      console.log(this.TodoListComponent);
+
     }
 
 }
