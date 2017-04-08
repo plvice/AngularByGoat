@@ -22,6 +22,10 @@ export class AppComponent {
       this.TodoListComponent.initTaskList(data);
     }
 
+    addTask(data: Task) {
+      this.TodoListComponent.addNewTask(data);
+    }
+
     ngAfterViewInit() {
 
     }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Task } from '../../app.task';
 
 @Component({
@@ -7,17 +7,27 @@ import { Task } from '../../app.task';
 })
 
 export class AddFormComponent implements OnInit {
+    @Output() taskAdded =  new EventEmitter();
     task: Object;
     taskTitle: String;
     taskPriority: Number;
 
-    constructor() { }
+    constructor() { 
+        this.taskPriority = 0;
+    }
 
     addTask() {
         this.task = new Task(this.taskTitle, this.taskPriority);
+        this.taskAdded.emit(this.task);
+        this.clearModel();
+    }
+
+    clearModel() {
+        this.taskTitle = '';
+        this.taskPriority = 0;
     }
 
     ngOnInit() {
-        console.log('add task form initialized');
+
     }
 }
