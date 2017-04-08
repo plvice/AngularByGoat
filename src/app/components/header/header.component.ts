@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit {
     }
 
     resetList() {
-        console.log('event emitter');
         this.formReset.emit(null);
     }
 }
